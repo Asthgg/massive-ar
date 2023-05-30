@@ -5,12 +5,14 @@ import {
   ViroText,
   ViroARSceneNavigator,
   ViroTrackingStateConstants,
+  ViroTrackingState,
+  ViroTrackingReason,
 } from '@viro-community/react-viro';
 
 const HelloWorldSceneAR = () => {
   const [text, setText] = useState('Initializing AR...');
 
-  function onInitialized(state: any, reason: any) {
+  function onInitialized(state: ViroTrackingState, reason: ViroTrackingReason) {
     console.log('guncelleme', state, reason);
     if (state === ViroTrackingStateConstants.TRACKING_NORMAL) {
       setText('Hello World!');
@@ -43,7 +45,7 @@ export default (): JSX.Element => {
   );
 };
 
-var styles = StyleSheet.create({
+const styles = StyleSheet.create({
   f1: {flex: 1},
   helloWorldTextStyle: {
     fontFamily: 'Arial',
