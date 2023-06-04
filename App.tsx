@@ -1,9 +1,9 @@
 import React from 'react';
 
-import MainScreen from './src/MainScreen';
+import RootScreen from './src/screens/Root';
 
 function App(): JSX.Element {
-  return <MainScreen />;
+  return <RootScreen />;
 }
 
 export default App;

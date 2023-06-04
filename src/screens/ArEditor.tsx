@@ -9,7 +9,7 @@ import {
   ViroTrackingReason,
 } from '@viro-community/react-viro';
 
-const HelloWorldSceneAR = () => {
+const ArEditor = () => {
   const [text, setText] = useState('Initializing AR...');
 
   function onInitialized(state: ViroTrackingState, reason: ViroTrackingReason) {
@@ -38,7 +38,7 @@ export default (): JSX.Element => {
     <ViroARSceneNavigator
       autofocus={true}
       initialScene={{
-        scene: HelloWorldSceneAR,
+        scene: ArEditor,
       }}
       style={styles.f1}
     />
