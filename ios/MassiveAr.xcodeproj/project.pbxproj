@@ -14,6 +14,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-MassiveAr-MassiveArTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-MassiveAr-MassiveArTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		C4AF54202A2C6BAF00AB8E5F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C4AF541F2A2C6BAE00AB8E5F /* GoogleService-Info.plist */; };
+		C4AF54232A2C6CB200AB8E5F /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = C4AF54222A2C6CB200AB8E5F /* FirebaseAnalytics */; };
+		C4AF54252A2C6CB200AB8E5F /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = C4AF54242A2C6CB200AB8E5F /* FirebaseDatabase */; };
+		C4AF54272A2C6CB200AB8E5F /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = C4AF54262A2C6CB200AB8E5F /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,7 @@
 		5DCACB8F33CDC322A6C60F78 /* libPods-MassiveAr.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MassiveAr.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = MassiveAr/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-MassiveAr-MassiveArTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MassiveAr-MassiveArTests.release.xcconfig"; path = "Target Support Files/Pods-MassiveAr-MassiveArTests/Pods-MassiveAr-MassiveArTests.release.xcconfig"; sourceTree = "<group>"; };
+		C4AF541F2A2C6BAE00AB8E5F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -59,6 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4AF54252A2C6CB200AB8E5F /* FirebaseDatabase in Frameworks */,
+				C4AF54272A2C6CB200AB8E5F /* FirebaseStorage in Frameworks */,
+				C4AF54232A2C6CB200AB8E5F /* FirebaseAnalytics in Frameworks */,
 				0C80B921A6F3F58F76C31292 /* libPods-MassiveAr.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -86,6 +94,7 @@
 		13B07FAE1A68108700A75B9A /* MassiveAr */ = {
 			isa = PBXGroup;
 			children = (
+				C4AF541F2A2C6BAE00AB8E5F /* GoogleService-Info.plist */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -190,6 +199,11 @@
 			dependencies = (
 			);
 			name = MassiveAr;
+			packageProductDependencies = (
+				C4AF54222A2C6CB200AB8E5F /* FirebaseAnalytics */,
+				C4AF54242A2C6CB200AB8E5F /* FirebaseDatabase */,
+				C4AF54262A2C6CB200AB8E5F /* FirebaseStorage */,
+			);
 			productName = MassiveAr;
 			productReference = 13B07F961A680F5B00A75B9A /* MassiveAr.app */;
 			productType = "com.apple.product-type.application";
@@ -220,6 +234,9 @@
 				Base,
 			);
 			mainGroup = 83CBB9F61A601CBA00E9B192;
+			packageReferences = (
+				C4AF54212A2C6CB200AB8E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -244,6 +261,7 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				C4AF54202A2C6BAF00AB8E5F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -498,7 +516,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.massivear;
 				PRODUCT_NAME = MassiveAr;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -524,7 +542,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.massivear;
 				PRODUCT_NAME = MassiveAr;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -699,6 +717,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C4AF54212A2C6CB200AB8E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C4AF54222A2C6CB200AB8E5F /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4AF54212A2C6CB200AB8E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		C4AF54242A2C6CB200AB8E5F /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4AF54212A2C6CB200AB8E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		C4AF54262A2C6CB200AB8E5F /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4AF54212A2C6CB200AB8E5F /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 83CBB9F71A601CBA00E9B192 /* Project object */;
 }

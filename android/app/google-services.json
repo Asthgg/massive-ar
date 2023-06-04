@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "20006464391",
+    "project_id": "cis657-mobileappdev",
+    "storage_bucket": "cis657-mobileappdev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20006464391:android:4fe607f468922df835c122",
+        "android_client_info": {
+          "package_name": "com.massivear"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByrOQguPjJo4WgyBmcOFYK6iHQ-u8fLgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
