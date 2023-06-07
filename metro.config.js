@@ -5,6 +5,9 @@
  * @format
  */
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment, @typescript-eslint/no-var-requires
+const {assetExts} = require('metro-config/src/defaults/defaults');
+
 module.exports = {
   transformer: {
     getTransformOptions: async () => ({
@@ -13,5 +16,12 @@ module.exports = {
         inlineRequires: true,
       },
     }),
+  },
+  resolver: {
+    assetExts: [
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      ...assetExts, // <- array spreading defaults
+      'glb',
+    ],
   },
 };
