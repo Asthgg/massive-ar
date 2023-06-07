@@ -22,6 +22,9 @@ module.exports = {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
       ...assetExts, // <- array spreading defaults
       'glb',
+      'gltf',
+      'fbx',
+      'vrx',
     ],
   },
 };
