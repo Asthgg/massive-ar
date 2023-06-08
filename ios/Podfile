@@ -33,12 +33,12 @@ target 'MassiveAr' do
 
   use_frameworks! :linkage => :static
 
-  $RNFirebaseAsStaticFramework = true
-  pod 'Firebase', :modular_headers => true
-  pod 'FirebaseCoreInternal', :modular_headers => true
-  pod 'GoogleUtilities', :modular_headers => true
-  pod 'FirebaseCore', :modular_headers => true
-  pod 'FirebaseStorage', :modular_headers => true
+#  $RNFirebaseAsStaticFramework = true
+#  pod 'Firebase', :modular_headers => true
+#  pod 'FirebaseCoreInternal', :modular_headers => true
+#  pod 'GoogleUtilities', :modular_headers => true
+#  pod 'FirebaseCore', :modular_headers => true
+#  pod 'FirebaseStorage', :modular_headers => true
 
   use_react_native!(
     :path => config[:reactNativePath],
