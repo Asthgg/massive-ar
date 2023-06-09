@@ -10,6 +10,7 @@ import {
   Viro3DObject,
   ViroSpotLight,
   ViroAmbientLight,
+  ViroARPlaneSelector
 } from '@viro-community/react-viro';
 
 const ArEditor = () => {
@@ -26,12 +27,12 @@ const ArEditor = () => {
 
   return (
     <ViroARScene onTrackingUpdated={onInitialized}>
-      <ViroText
+      {/* <ViroText
         text={text}
         scale={[0.5, 0.5, 0.5]}
         position={[0, 0, -1]}
         style={styles.helloWorldTextStyle}
-      />
+      /> */}
       <ViroSpotLight
         innerAngle={5}
         outerAngle={45}
@@ -46,16 +47,19 @@ const ArEditor = () => {
         shadowOpacity={0.7}
       />
       <ViroAmbientLight color="#ffffff" intensity={200} />
+      <ViroARPlaneSelector>
       <Viro3DObject
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         source={require('../assets/chair.glb')}
         type="GLB"
         scale={[1, 1, 1]}
-        position={[0, 0, -1]}
+        position={[0, 0, 1]}
         onLoadStart={() => console.log('OnLoadStart 3D object: ')}
         // onLoadEnd={args => console.log('onLoadError 3D object: ', args)}
         onError={err => console.log('Error 3D object: ', err)}
       />
+      </ViroARPlaneSelector>
+      
     </ViroARScene>
   );
 };
