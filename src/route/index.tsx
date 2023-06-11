@@ -3,7 +3,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import ScreenHeader from '../components/ScreenHeader';
+// import ScreenHeader from '../components/ScreenHeader';
 
 import Home from '../screens/Home';
 import Feed from '../screens/Profile';
