@@ -1,0 +1,20 @@
+{
+  "furniture": {
+    "id1": {
+      "preview_url": "furniture/arm_chair_furniture_preview.png",
+      "model_url": "furniture/arm_chair__furniture.glb"
+    },
+    "id2": {
+      "preview_url": "furniture/chair_preview.png",
+      "model_url": "furniture/chair.glb"
+    },
+    "id3": {
+      "preview_url": "furniture/furniture_preview.png",
+      "model_url": "furniture/furniture.glb"
+    },
+    "id4": {
+      "preview_url": "furniture/round_table_furniture_model_preview.png",
+      "model_url": "furniture/round_table_furniture_model.glb"
+    }
+  }
+}

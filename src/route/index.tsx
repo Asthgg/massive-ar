@@ -7,7 +7,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import Home from '../screens/Home';
 import Feed from '../screens/Profile';
-import ArEditor from '../screens/ArEditor';
+import ArEditor from '../screens/arEditor/index';
 
 const Tab = createBottomTabNavigator();
 
