@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {StyleSheet, View} from 'react-native';
-
+import ViewShot from 'react-native-view-shot';
+import { captureRef } from 'react-native-view-shot';
 import {
   ViroARScene,
   ViroARSceneNavigator,
@@ -70,7 +71,21 @@ const ArEditor = () => {
 };
 
 export default () => {
+
+  var captureRef = useRef();
+
+
+  const captureScreenshot = async () => {
+    try {
+      const uri = await captureRef.capture();
+      console.log('Screenshot captured:', uri);
+    } catch (error) {
+      console.error('Failed to capture screenshot:', error);
+    }
+  };
+
   return (
+    <ViewShot ref={ref => (captureRef = ref)} >
     <View style={styles.f1}>
       <ViroARSceneNavigator
         autofocus={true}
@@ -82,6 +97,7 @@ export default () => {
       <EditionMode />
       <FurnitureGallery />
     </View>
+    </ViewShot>
   );
 };
 
