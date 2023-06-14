@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {FlatList, StyleSheet, View} from 'react-native';
 
 import firebase from '../../lib/firebase';
+import analytics from '@react-native-firebase/analytics';
 import GalleryItem from '../../components/GalleryItem';
 import {ArContextProps, useArContext, ArObject} from '../../context';
 
@@ -10,6 +11,7 @@ function FurnitureGallery() {
   const [objects, setObjects] = useState<ArObject[]>([]);
 
   useEffect(() => {
+    analytics().setAnalyticsCollectionEnabled(true);
     void firebase.getFurniture().then(async snapshot => {
       console.log('Furniture data: ', snapshot.val());
       const uris: ArObject[] = [];

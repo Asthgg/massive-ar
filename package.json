@@ -10,6 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-firebase/analytics": "^18.0.0",
     "@react-native-firebase/app": "^18.0.0",
     "@react-native-firebase/database": "^18.0.0",
     "@react-native-firebase/storage": "^18.0.0",
