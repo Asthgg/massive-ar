@@ -1,5 +1,5 @@
 import React, {useRef} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
 import ViewShot from 'react-native-view-shot';
 import { captureRef } from 'react-native-view-shot';
 import {
@@ -85,7 +85,7 @@ export default () => {
   };
 
   return (
-    <ViewShot ref={ref => (captureRef = ref)} >
+    <ViewShot style={styles.f1} ref={ref => (captureRef = ref)} >
     <View style={styles.f1}>
       <ViroARSceneNavigator
         autofocus={true}
@@ -96,6 +96,9 @@ export default () => {
       />
       <EditionMode />
       <FurnitureGallery />
+      <TouchableOpacity onPress={captureScreenshot}>
+        <Text>Capture Screenshot</Text>
+      </TouchableOpacity>
     </View>
     </ViewShot>
   );
