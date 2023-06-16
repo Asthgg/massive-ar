@@ -1,7 +1,14 @@
-import React, {useRef} from 'react';
-import {StyleSheet, View, TouchableOpacity, Text} from 'react-native';
+import React, {useRef, useState} from 'react';
+import firebase from '../../lib/firebase';
+import {
+  Modal,
+  Image,
+  StyleSheet,
+  View,
+  TouchableOpacity,
+  Text,
+} from 'react-native';
 import ViewShot from 'react-native-view-shot';
-import { captureRef } from 'react-native-view-shot';
 import {
   ViroARScene,
   ViroARSceneNavigator,
@@ -71,43 +78,117 @@ const ArEditor = () => {
 };
 
 export default () => {
-
   var captureRef = useRef();
 
+  const [screenshotUri, setScreenshotUri] = useState(null);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const captureScreenshot = async () => {
     try {
       const uri = await captureRef.capture();
+      setScreenshotUri(uri);
+      setModalVisible(true);
       console.log('Screenshot captured:', uri);
     } catch (error) {
       console.error('Failed to capture screenshot:', error);
     }
   };
 
+  const handleCancel = () => {
+    setModalVisible(false);
+    setScreenshotUri(null);
+  };
+
+  const handleUpload = async () => {
+    try {
+      await firebase.uploadImageToFirebase(screenshotUri);
+      setModalVisible(false);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
-    <ViewShot style={styles.f1} ref={ref => (captureRef = ref)} >
-    <View style={styles.f1}>
-      <ViroARSceneNavigator
-        autofocus={true}
-        initialScene={{
-          scene: ArEditor,
-        }}
-        style={styles.viro}
-      />
-      <EditionMode />
-      <FurnitureGallery />
-      <TouchableOpacity onPress={captureScreenshot}>
-        <Text>Capture Screenshot</Text>
-      </TouchableOpacity>
+    <View style={styles.container}>
+      <View style={styles.f1}>
+        <ViewShot style={styles.f1} ref={ref => (captureRef = ref)}>
+          <ViroARSceneNavigator
+            autofocus={true}
+            initialScene={{
+              scene: ArEditor,
+            }}
+            style={styles.viro}
+          />
+        </ViewShot>
+        <EditionMode />
+        <FurnitureGallery />
+        <TouchableOpacity onPress={captureScreenshot}>
+          <Text>Capture Screenshot</Text>
+        </TouchableOpacity>
+      </View>
+
+      <Modal visible={modalVisible} transparent>
+        <View style={styles.modalContainer}>
+          <View style={styles.modalContent}>
+            {screenshotUri && (
+              <Image
+                source={{uri: screenshotUri}}
+                style={styles.previewImage}
+              />
+            )}
+
+            <View style={styles.buttonContainer}>
+              <TouchableOpacity style={styles.button} onPress={handleCancel}>
+                <Text>Cancel</Text>
+              </TouchableOpacity>
+              <TouchableOpacity style={styles.button} onPress={handleUpload}>
+                <Text>Upload</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
+      </Modal>
     </View>
-    </ViewShot>
   );
 };
 
 const styles = StyleSheet.create({
-  f1: {flex: 1},
   viro: {
     height: '100%',
     flex: 1,
+  },
+  container: {
+    flex: 1,
+  },
+  f1: {
+    flex: 1,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    backgroundColor: 'white',
+    padding: 20,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  previewImage: {
+    width: 200,
+    height: 200,
+    marginBottom: 20,
+  },
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  button: {
+    marginHorizontal: 10,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    backgroundColor: '#ccc',
+    borderRadius: 4,
   },
 });

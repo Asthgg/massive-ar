@@ -49,8 +49,23 @@ function getFurniture() {
   return database().ref(FURNITURE_DB).once('value');
 }
 
+async function uploadImageToFirebase(path: string) {
+  try {
+    const response = await fetch(path);
+    const blob = await response.blob();
+    const filename = `uploaded_${Date.now()}.png`;
+    const storageRef = furnitureBucket.ref().child('feed').child(filename);
+    await storageRef.put(blob);
+    const downloadURL = await storageRef.getDownloadURL();
+    console.log('Image uploaded successfully:', downloadURL);
+  } catch (error) {
+    console.error('Failed to upload image:', error);
+  }
+}
+
 export default {
   list,
   getObjectUrl,
   getFurniture,
+  uploadImageToFirebase,
 };
