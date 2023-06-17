@@ -20,11 +20,6 @@ function MainBottomTabs() {
         component={ArEditor}
         options={{header: () => null}}
       />
-      <Tab.Screen
-        name="Profile"
-        component={Feed}
-        options={{header: () => null}}
-      />
     </Tab.Navigator>
   );
 }

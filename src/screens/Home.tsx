@@ -8,7 +8,6 @@ import {
   SafeAreaView,
 } from 'react-native';
 
-// Import the function to fetch images in the feed bucket
 import firebase from '../lib/firebase';
 
 const FeedComponent = () => {
