@@ -63,9 +63,29 @@ async function uploadImageToFirebase(path: string) {
   }
 }
 
+async function fetchImagesInFeedBucket() {
+  try {
+    const reference = furnitureBucket.ref('feed');
+    const imageUrls = [];
+
+    const files = await listFilesAndDirectories(reference, []);
+
+    for (const file of files) {
+      const downloadURL = await getObjectUrl(file);
+      imageUrls.push(downloadURL);
+    }
+    // console.log('Image URLS ', imageUrls);
+    return imageUrls;
+  } catch (error) {
+    console.error('Failed to fetch images in feed bucket:', error);
+    return [];
+  }
+}
+
 export default {
   list,
   getObjectUrl,
   getFurniture,
   uploadImageToFirebase,
+  fetchImagesInFeedBucket,
 };
