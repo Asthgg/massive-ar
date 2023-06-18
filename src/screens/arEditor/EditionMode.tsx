@@ -35,24 +35,32 @@ const EditionMode = () => {
   return objectOnEdit !== null ? (
     <View
       style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.3)',
-        height: 70,
+        backgroundColor: 'transparent',
+        position: 'absolute',
+        right: 15,
+        bottom: 70,
       }}>
       <View
         style={{
-          flexDirection: 'row',
           justifyContent: 'space-around',
+          flexDirection: 'column',
         }}>
         <View>
           <IconButton
             iconName="angle-acute"
             color="black"
             onPress={onPressButton}
+            size={20}
           />
           <Text>Rotate</Text>
         </View>
         <View>
-          <IconButton iconName="delete" color="black" onPress={onDelete} />
+          <IconButton
+            iconName="delete"
+            color="black"
+            onPress={onDelete}
+            size={20}
+          />
           <Text>Delete</Text>
         </View>
       </View>

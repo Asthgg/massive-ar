@@ -72,15 +72,15 @@ const styles = StyleSheet.create({
   },
   content: {
     backgroundColor: '#2a2b27',
-    height: 100,
+    height: 130,
     justifyContent: 'center',
     alignItems: 'center',
   },
   activeObject: {
     borderWidth: 2,
     borderColor: 'white',
-    width: 75,
-    height: 75,
+    width: 80,
+    height: 80,
   },
 });
 

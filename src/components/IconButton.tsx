@@ -3,28 +3,30 @@ import {StyleSheet, TouchableOpacity, Text} from 'react-native';
 
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-function IconButton({iconName, onPress, color}) {
+import styled from 'styled-components/native';
+
+const Container = styled.TouchableOpacity`
+  justify-content: center;
+  align-items: center;
+  width: ${props => props.width}px;
+  height: ${props => props.height}px;
+  background-color: white;
+  border-radius: 50px;
+`;
+
+type IconButtonProps = {
+  iconName: string;
+  onPress: () => void;
+  color: string;
+  size: number;
+};
+
+function IconButton({iconName, onPress, color, size}: IconButtonProps) {
   return (
-    <TouchableOpacity style={style.container} onPress={onPress}>
-      <Icon name={iconName} color={color} size={30} />
-    </TouchableOpacity>
+    <Container onPress={onPress} width={size + 30} height={size + 30}>
+      <Icon name={iconName} color={color} size={size || 30} />
+    </Container>
   );
 }
-
-const style = StyleSheet.create({
-  container: {
-    alignItems: 'center',
-    justifyContent: 'center',
-    flexDirection: 'row',
-    borderRadius: 50,
-    width: 40,
-    height: 40,
-    backgroundColor: 'white',
-  },
-  text: {
-    fontSize: 13,
-    color: 'white',
-  },
-});
 
 export default IconButton;

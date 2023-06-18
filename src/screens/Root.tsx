@@ -8,7 +8,11 @@ import Route from '../route';
 const RootScreen = () => {
   return (
     <RootLayout>
-      <StatusBar barStyle="dark-content" translucent backgroundColor="white" />
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
       <Route />
     </RootLayout>
   );

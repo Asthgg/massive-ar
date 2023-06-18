@@ -1,24 +1,32 @@
 import * as React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-// import ScreenHeader from '../components/ScreenHeader';
-
 import Home from '../screens/Home';
-import Feed from '../screens/Profile';
 import ArEditor from '../screens/arEditor/index';
+import cutomsTabBar from './components/cutomsTabBar';
+import customTabScreen from './components/customTabScreen';
 
 const Tab = createBottomTabNavigator();
 
 function MainBottomTabs() {
   return (
-    <Tab.Navigator>
-      <Tab.Screen name="Home" component={Home} options={{header: () => null}} />
+    <Tab.Navigator {...cutomsTabBar()}>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={customTabScreen({
+          iconName: 'home',
+          title: 'Home',
+        })}
+      />
       <Tab.Screen
         name="Ar"
         component={ArEditor}
-        options={{header: () => null}}
+        options={customTabScreen({
+          iconName: 'cube-scan',
+          title: 'Ar Editor',
+        })}
       />
     </Tab.Navigator>
   );

@@ -5,11 +5,14 @@ import {StyleSheet, View} from 'react-native';
 const styles = StyleSheet.create({
   wrapper: {
     flex: 1,
-    backgroundColor: 'white',
   },
 });
 
-const RootLayout = ({children}) => (
+type Props = {
+  children: JSX.Element;
+};
+
+const RootLayout = ({children}: Props) => (
   <View style={styles.wrapper}>{children}</View>
 );
 

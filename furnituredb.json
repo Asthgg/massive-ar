@@ -15,6 +15,14 @@
     "id4": {
       "preview_url": "furniture/round_table_furniture_model_preview.png",
       "model_url": "furniture/round_table_furniture_model.glb"
+    },
+    "id5": {
+      "preview_url": "furniture/table_lamp.png",
+      "model_url": "furniture/table_lamp.glb"
+    },
+    "id6": {
+      "preview_url": "furniture/low_poly_mini_succulent_collection.png",
+      "model_url": "furniture/low_poly_mini_succulent_collection.glb"
     }
   }
 }

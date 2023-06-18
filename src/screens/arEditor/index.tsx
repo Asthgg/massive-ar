@@ -21,6 +21,7 @@ import {ArContextProps, useArContext} from '../../context';
 import ArObject from './ArObject';
 import FurnitureGallery from './FurnitureGallery';
 import EditionMode from './EditionMode';
+import Screenshot from './Screenshot';
 
 const ArEditor = () => {
   const {sceneObjects, currentObject, setSceneObjects}: ArContextProps =
@@ -78,10 +79,10 @@ const ArEditor = () => {
 };
 
 export default () => {
-  var captureRef = useRef();
+  let captureRef = useRef();
 
-  const [screenshotUri, setScreenshotUri] = useState(null);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [screenshotUri, setScreenshotUri] = useState<string>('');
+  const [modalVisible, setModalVisible] = useState<boolean>(false);
 
   const captureScreenshot = async () => {
     try {
@@ -96,7 +97,7 @@ export default () => {
 
   const handleCancel = () => {
     setModalVisible(false);
-    setScreenshotUri(null);
+    setScreenshotUri('');
   };
 
   const handleUpload = async () => {
@@ -121,33 +122,15 @@ export default () => {
           />
         </ViewShot>
         <EditionMode />
-        <FurnitureGallery />
-        <TouchableOpacity onPress={captureScreenshot}>
-          <Text>Capture Screenshot</Text>
-        </TouchableOpacity>
+        <Screenshot
+          visible={modalVisible}
+          uri={screenshotUri}
+          handleCancel={handleCancel}
+          handleUpload={handleUpload}
+          onCapture={captureScreenshot}
+        />
       </View>
-
-      <Modal visible={modalVisible} transparent>
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            {screenshotUri && (
-              <Image
-                source={{uri: screenshotUri}}
-                style={styles.previewImage}
-              />
-            )}
-
-            <View style={styles.buttonContainer}>
-              <TouchableOpacity style={styles.button} onPress={handleCancel}>
-                <Text>Cancel</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={styles.button} onPress={handleUpload}>
-                <Text>Upload</Text>
-              </TouchableOpacity>
-            </View>
-          </View>
-        </View>
-      </Modal>
+      <FurnitureGallery />
     </View>
   );
 };
